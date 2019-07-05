@@ -60,24 +60,9 @@ export default class App extends Component {
     return(
       <View style={styles.container}>
         <View style={styles.logo}>
-          <View style={styles.naipeBox}>
-            <Image
-                source={require('./images/naipe-ouro.png')}
-                style={{width: 40, height: 40}} />
-          </View>
-          <View style={styles.naipeBox}>
-            <Image
-                source={require('./images/naipe-espada.png')}
-                style={{width: 40, height: 40}} />
-          </View><View style={styles.naipeBox}>
-            <Image
-                source={require('./images/naipe-copas.png')}
-                style={{width: 40, height: 40}} />
-          </View><View style={styles.naipeBox}>
-            <Image
-                source={require('./images/naipe-paus.png')}
-                style={{width: 40, height: 40}} />
-          </View>
+        <Image
+                source={require('./images/logo.png')}
+                style=""/>
         </View>
         <View style={styles.menu}>
           <Text style={styles.title}>MARCADOR DE TRUCO</Text>
