@@ -64,10 +64,6 @@ export default class App extends Component {
                 source={require('./images/logo.png')}
                 style=""/>
         </View>
-        <View style={styles.menu}>
-          <Text style={styles.title}>MARCADOR DE TRUCO</Text>
-          <Text style={styles.title}>3100</Text>
-        </View>
         <View style={styles.teams}>
           <View style={styles.team}>
             <Text style={styles.teamTitle}>A</Text>
