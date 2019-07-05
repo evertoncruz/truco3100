@@ -76,30 +76,31 @@ export default class App extends Component {
         </View>
         <View style={styles.reset}>
           <TouchableOpacity onPress={this.resetPoint}>
+            <Image source={require('./images/cards.png')} />
             <Text style={styles.resetButton}>Zerar</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.enhancers}>
           <View style={styles.enhancer}>
-          <TouchableOpacity onPress={this.incrementTeamA}>
-            <Text style={styles.enhancerButton} >+</Text>
+            <TouchableOpacity onPress={this.incrementTeamA}>
+              <Image source={require('./images/spade-token.png')} />
             </TouchableOpacity>
           </View>
           <View style={styles.enhancer}>
             <TouchableOpacity onPress={this.incrementTeamB}>
-            <Text style={styles.enhancerButton} >+</Text>
+              <Image source={require('./images/spade-token.png')} />
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.enhancers}>
           <View style={styles.enhancer}>
-          <TouchableOpacity onPress={this.decreaseTeamA}>
-            <Text style={styles.enhancerButton} >-</Text>
+            <TouchableOpacity onPress={this.decreaseTeamA}>
+              <Image source={require('./images/spade-token.png')} style={styles.rotateImage} />
             </TouchableOpacity>
           </View>
           <View style={styles.enhancer}>
             <TouchableOpacity onPress={this.decreaseTeamB}>
-            <Text style={styles.enhancerButton} >-</Text>
+              <Image source={require('./images/spade-token.png')} style={styles.rotateImage} />
             </TouchableOpacity>
           </View>
         </View>
@@ -156,7 +157,10 @@ const styles = StyleSheet.create({
   reset:{
     flex: 1,
     alignItems: 'center',
-    marginTop: 60
+    marginTop: 0
+  },
+  resetPoint: {
+    justifyContent: 'center'
   },
   resetButton: {
     alignItems: 'center',
@@ -171,5 +175,8 @@ const styles = StyleSheet.create({
   enhancerButton: {
     fontSize: 150,
     color: '#000'
+  },
+  rotateImage: {
+    transform: [{ rotate: '180deg' }]
   }
 });
