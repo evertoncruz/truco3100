@@ -8,54 +8,73 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
-import PropTypes from 'prop-types';
 
 
 export default class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       primary: 0,
       secondary: 0,
     };
-    Alert.alert('teste', this.state.primary);
-    
   }
 
-  incrementAOne(){
-    // this.setState({
-    //   pointA: this.state.primary++
-    // });
+  incrementTeamA = () => {
+    if(this.state.primary < 12) {
+      this.setState({primary: this.state.primary + 1});
+    }
   }
 
-  incrementBOne(){
-    // Alert.alert('teste', this.state.secondary);
-    // let b = this.state.secondary;
-    this.setState({secondary: this.state.secondary + 1 });
+  incrementTeamB = () => {
+    if(this.state.secondary < 12) {
+      this.setState({secondary: this.state.secondary + 1});
+    }
   }
 
+  decreaseTeamA = () => {
+    if(this.state.primary > 0) {
+      this.setState({primary: this.state.primary - 1});
+    }
+  }
 
+  decreaseTeamB = () => {
+    if(this.state.secondary > 0) {
+      this.setState({secondary: this.state.secondary - 1});
+    }
+  }
+
+  resetPoint = () => {
+    // Alert.alert('Deseja zerar o placar?')
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {text: 'Cancel', onPress: () => true},
+        {text: 'OK', onPress: () => this.setState({primary: 0, secondary: 0})},
+      ],
+    );
+  }
 
   render() {
     return(
       <View style={styles.container}>
         <View style={styles.logo}>
           <View style={styles.naipeBox}>
-            <Image 
+            <Image
                 source={require('./images/naipe-ouro.png')}
                 style={{width: 40, height: 40}} />
           </View>
           <View style={styles.naipeBox}>
-            <Image 
+            <Image
                 source={require('./images/naipe-espada.png')}
                 style={{width: 40, height: 40}} />
           </View><View style={styles.naipeBox}>
-            <Image 
+            <Image
                 source={require('./images/naipe-copas.png')}
                 style={{width: 40, height: 40}} />
           </View><View style={styles.naipeBox}>
-            <Image 
+            <Image
                 source={require('./images/naipe-paus.png')}
                 style={{width: 40, height: 40}} />
           </View>
@@ -75,15 +94,31 @@ export default class App extends Component {
           </View>
         </View>
         <View style={styles.reset}>
-          <Text style={styles.resetButton}>Zerar?</Text>
+          <TouchableOpacity onPress={this.resetPoint}>
+            <Text style={styles.resetButton}>Zerar</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.enhancers}>
           <View style={styles.enhancer}>
-            <Text style={styles.enhancerButton} onPress={() => this.incrementAOne}>+</Text>
+          <TouchableOpacity onPress={this.incrementTeamA}>
+            <Text style={styles.enhancerButton} >+</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.enhancer}>
-            <TouchableOpacity onPress={this.incrementBOne}>
+            <TouchableOpacity onPress={this.incrementTeamB}>
             <Text style={styles.enhancerButton} >+</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.enhancers}>
+          <View style={styles.enhancer}>
+          <TouchableOpacity onPress={this.decreaseTeamA}>
+            <Text style={styles.enhancerButton} >-</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.enhancer}>
+            <TouchableOpacity onPress={this.decreaseTeamB}>
+            <Text style={styles.enhancerButton} >-</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -157,8 +192,3 @@ const styles = StyleSheet.create({
     color: '#000'
   }
 });
-
-// App.propTypes = {
-//   primary: PropTypes.number,
-//   secondary: PropTypes.number,
-// };
