@@ -47,8 +47,8 @@ export default class App extends Component {
   resetPoint = () => {
     // Alert.alert('Deseja zerar o placar?')
     Alert.alert(
-      'Alert Title',
-      'My Alert Msg',
+      'Deseja zerar o placar?',
+      'Ao realizar esta ação a mesma não poderá ser mais desfeita.',
       [
         {text: 'Cancel', onPress: () => true},
         {text: 'OK', onPress: () => this.setState({primary: 0, secondary: 0})},
