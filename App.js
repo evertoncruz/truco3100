@@ -6,44 +6,177 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      primary: 0,
+      secondary: 0,
+    };
+  }
+
+  incrementTeamA = () => {
+    if(this.state.primary < 12) {
+      this.setState({primary: this.state.primary + 1});
+    }
+  }
+
+  incrementTeamB = () => {
+    if(this.state.secondary < 12) {
+      this.setState({secondary: this.state.secondary + 1});
+    }
+  }
+
+  decreaseTeamA = () => {
+    if(this.state.primary > 0) {
+      this.setState({primary: this.state.primary - 1});
+    }
+  }
+
+  decreaseTeamB = () => {
+    if(this.state.secondary > 0) {
+      this.setState({secondary: this.state.secondary - 1});
+    }
+  }
+
+  resetPoint = () => {
+    // Alert.alert('Deseja zerar o placar?')
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {text: 'Cancel', onPress: () => true},
+        {text: 'OK', onPress: () => this.setState({primary: 0, secondary: 0})},
+      ],
+    );
+  }
+
   render() {
-    return (
+    return(
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <View style={styles.logo}>
+        <Image
+                source={require('./images/logo.png')}
+                style=""/>
+        </View>
+        <View style={styles.teams}>
+          <View style={styles.team}>
+            <Text style={styles.teamTitle}>A</Text>
+            <Text style={styles.teamPoint}>{this.state.primary}</Text>
+          </View>
+          <View style={styles.team}>
+            <Text style={styles.teamTitle}>B</Text>
+            <Text style={styles.teamPoint}>{this.state.secondary}</Text>
+          </View>
+        </View>
+        <View style={styles.reset}>
+          <TouchableOpacity onPress={this.resetPoint}>
+            <Image source={require('./images/cards.png')} />
+            <Text style={styles.resetButton}>Zerar</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.enhancers}>
+          <View style={styles.enhancer}>
+            <TouchableOpacity onPress={this.incrementTeamA}>
+              <Image source={require('./images/spade-token.png')} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.enhancer}>
+            <TouchableOpacity onPress={this.incrementTeamB}>
+              <Image source={require('./images/spade-token.png')} />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.enhancers}>
+          <View style={styles.enhancer}>
+            <TouchableOpacity onPress={this.decreaseTeamA}>
+              <Image source={require('./images/spade-token.png')} style={styles.rotateImage} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.enhancer}>
+            <TouchableOpacity onPress={this.decreaseTeamB}>
+              <Image source={require('./images/spade-token.png')} style={styles.rotateImage} />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#2E8B57'
+  },
+  logo: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  naipeBox: {
+    height: 50,
+    width: 50,
+    borderColor: '#999',
+    borderWidth: 5,
+    margin: 10
+  },
+  title: {
+    color: '#000'
+  },
+  menu: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  teams: {
+    flex: 1,
+    flexDirection: 'row',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  team: {
+    flex: 1,
+    alignItems: 'center'
   },
+  teamTitle: {
+    fontSize: 50,
+    color: '#000'
+  },
+  teamPoint: {
+    fontSize: 100,
+    marginTop: 40,
+    borderRadius: 5,
+    color: '#FFF'
+  },
+  enhancers: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  reset:{
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 0
+  },
+  resetPoint: {
+    justifyContent: 'center'
+  },
+  resetButton: {
+    alignItems: 'center',
+    fontSize: 30,
+    color: '#B22222'
+  },
+  enhancer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  enhancerButton: {
+    fontSize: 150,
+    color: '#000'
+  },
+  rotateImage: {
+    transform: [{ rotate: '180deg' }]
+  }
 });
