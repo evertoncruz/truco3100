@@ -20,8 +20,16 @@ Lembrando que de início daremos suporte somente para plataforma Android
 ## Executando o projeto
 
 ```
+npm i
+```
+
+Deve ser executado somente para instalação inicial
+
+```
 react-native run-android
 ```
+
+Para build de projeto toda vez que ouver atualização
 
 Deve configurar um emulador ou até mesmo um device físico para que o build possa ser exibido, para isto verifcar a documentação para mais detalhes em [Android Studio](https://developer.android.com/studio/?gclid=CjwKCAjw04vpBRB3EiwA0Iieaj8WIwFOfInrmLNwBee0yUvK9I9UDcVKXx61lf6EdVKIKL0JmoV_cxoCTSgQAvD_BwE)
 
