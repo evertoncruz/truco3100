@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View, Image, Text } from 'react-native';
-import { images } from '../../assets/theme';
+import { images } from '../../assets/theme/images';
 
 
 
@@ -15,7 +15,7 @@ export const Enhancer = ({
   return (
     <View>
       <TouchableOpacity onPress={onPress}>
-        <Image source={require('../../assets/images/spade-token.png')} style={rotate && styles.rotateImage} />
+        <Image source={images[imageName]} style={rotate && styles.rotateImage} />
       </TouchableOpacity>
     </View>
   );

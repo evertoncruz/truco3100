@@ -81,21 +81,12 @@ export default class App extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.enhancers}>
-          <Enhancer onPress={this.incrementTeamA} rotate="true" />
-          <Enhancer onPress={this.incrementTeamB}/>
+          <Enhancer onPress={this.incrementTeamA} imageName="spadeToken" />
+          <Enhancer onPress={this.incrementTeamB} imageName="spadeToken" />
         </View>
-
         <View style={styles.enhancers}>
-          <View style={styles.enhancer}>
-            <TouchableOpacity onPress={this.decreaseTeamA}>
-              <Image source={require('./images/spade-token.png')} style={styles.rotateImage} />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.enhancer}>
-            <TouchableOpacity onPress={this.decreaseTeamB}>
-              <Image source={require('./images/spade-token.png')} style={styles.rotateImage} />
-            </TouchableOpacity>
-          </View>
+          <Enhancer onPress={this.decreaseTeamA} imageName="spadeToken" rotate />
+          <Enhancer onPress={this.decreaseTeamB} imageName="spadeToken" rotate />
         </View>
       </View>
     );
