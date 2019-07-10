@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+import { Enhancer } from './src/components/Enhancer';
 
 
 export default class App extends Component {
@@ -45,7 +46,6 @@ export default class App extends Component {
   }
 
   resetPoint = () => {
-    // Alert.alert('Deseja zerar o placar?')
     Alert.alert(
       'Deseja zerar o placar?',
       'Ao realizar esta ação a mesma não poderá ser mais desfeita.',
@@ -81,17 +81,10 @@ export default class App extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.enhancers}>
-          <View style={styles.enhancer}>
-            <TouchableOpacity onPress={this.incrementTeamA}>
-              <Image source={require('./images/spade-token.png')} />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.enhancer}>
-            <TouchableOpacity onPress={this.incrementTeamB}>
-              <Image source={require('./images/spade-token.png')} />
-            </TouchableOpacity>
-          </View>
+          <Enhancer onPress={this.incrementTeamA} rotate="true" />
+          <Enhancer onPress={this.incrementTeamB}/>
         </View>
+
         <View style={styles.enhancers}>
           <View style={styles.enhancer}>
             <TouchableOpacity onPress={this.decreaseTeamA}>
@@ -150,10 +143,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     color: '#FFF'
   },
-  enhancers: {
-    flex: 1,
-    flexDirection: 'row',
-  },
   reset:{
     flex: 1,
     alignItems: 'center',
@@ -166,6 +155,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 30,
     color: '#B22222'
+  },
+  enhancers: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   enhancer: {
     flex: 1,
